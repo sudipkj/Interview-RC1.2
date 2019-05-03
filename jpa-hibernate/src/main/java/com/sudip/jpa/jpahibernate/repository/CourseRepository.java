@@ -73,7 +73,7 @@ public class CourseRepository {
 
 	public List<Course> getAllCourses() {
 
-		TypedQuery<Course> courseList = em.createQuery("SELECT c FROM Course c", Course.class);
+		TypedQuery<Course> courseList = em.createQuery("SELECT c FROM Course c where c.name like '%Information%'", Course.class);
 		List<Course> cl = courseList.getResultList();
 		return cl;
 
