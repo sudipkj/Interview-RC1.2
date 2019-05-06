@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sudip.jpa.jpahibernate.entity.Course;
+import com.sudip.jpa.jpahibernate.entity.Currency;
 import com.sudip.jpa.jpahibernate.repository.CourseRepository;
+import com.sudip.jpa.jpahibernate.repository.CurrencyRepository;
 
 @RestController
 public class CourseRestController {
 
 	@Autowired
 	CourseRepository courseRepository;
+	
+	@Autowired
+	CurrencyRepository currencyRepository;
 	
 	@GetMapping("/getCourseById/{id}")
 	public Course getCourseById(@PathVariable int id) {
@@ -46,5 +51,10 @@ public class CourseRestController {
 	@GetMapping("/getAllCourses")
 	public List<Course> getAllCourses(){
 		return courseRepository.getAllCourses();
+	}
+	
+	@GetMapping("/getAllAvailableCCU")
+	public List<Currency> getAllAvailableCCU(){
+		return currencyRepository.getAllAvailableCCU();
 	}
 }
