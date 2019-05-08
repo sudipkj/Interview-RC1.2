@@ -53,6 +53,18 @@ public class CourseRestController {
 		return courseRepository.getAllCourses();
 	}
 	
+	//Generic Services
+	@GetMapping("/totalCourses")
+	public String totalCourses() {
+		return courseRepository.getTotalNoOfCourses();
+	}
+	@GetMapping("/listOfCourseNames")
+	public List<Course> listOfCourseNames() {
+		return courseRepository.getAllCourseNames();
+	}
+	
+	// All currency services are below
+	
 	@GetMapping("/getAllAvailableCCU")
 	public List<Currency> getAllAvailableCCU(){
 		return currencyRepository.getAllAvailableCCU();

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -77,6 +78,20 @@ public class CourseRepository {
 		List<Course> cl = courseList.getResultList();
 		return cl;
 
+	}
+	public List<Course> getAllCourseNames(){
+		Query query = em.createNamedQuery("query_get_all_courses", Course.class);
+		List<Course> list= query.getResultList();
+		return list;
+	}
+	
+	public String getTotalNoOfCourses() {
+		Query query = em.createNativeQuery("SELECT * FROM COURSE where id=:id",Course.class);
+		query.setParameter("id", 2);
+		List<Course> course = query.getResultList();
+		String result = course.get(0).getName();
+		
+		return result;
 	}
 
 }

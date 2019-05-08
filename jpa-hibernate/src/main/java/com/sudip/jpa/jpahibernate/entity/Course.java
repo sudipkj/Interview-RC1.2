@@ -3,8 +3,18 @@ package com.sudip.jpa.jpahibernate.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedNativeQueries(value = {
+		@NamedNativeQuery(name= "native_query_get_count", query="SELECT * FROM COURSE where id=:id")
+})
+@NamedQueries(value = {
+		@NamedQuery(name="query_get_all_courses", query="Select c from Course c")
+})
 public class Course {
 	@Id
 	@GeneratedValue
