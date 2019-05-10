@@ -55,8 +55,8 @@ public class CourseRestController {
 	
 	//Generic Services
 	@GetMapping("/totalCourses")
-	public String totalCourses() {
-		return courseRepository.getTotalNoOfCourses();
+	public void totalCourses() {
+		 courseRepository.getCourse();
 	}
 	@GetMapping("/listOfCourseNames")
 	public List<Course> listOfCourseNames() {

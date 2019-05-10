@@ -7,10 +7,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.junit.Test;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sudip.jpa.jpahibernate.entity.Course;
+import com.sudip.jpa.jpahibernate.entity.Review;
 
 @Repository
 @Transactional
@@ -92,6 +94,21 @@ public class CourseRepository {
 		String result = course.get(0).getName();
 		
 		return result;
+	}
+	
+	@Transactional
+	public void getCourse() {
+		Course course = em.find(Course.class, 1);
+		
+		Review re = new Review(5,"Best Course");
+		course.addReview(re);
+		re.setCourse(course);
+		em.persist(re);
+		
+		em.flush();
+		for (Review rev : course.getReviews()) {
+			System.out.println(rev.getDescription());
+		}
 	}
 
 }

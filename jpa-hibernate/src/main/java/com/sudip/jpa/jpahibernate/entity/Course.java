@@ -1,12 +1,16 @@
 package com.sudip.jpa.jpahibernate.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedNativeQueries(value = {
@@ -21,6 +25,12 @@ public class Course {
 	private int id;
 	
 	private String name;
+	
+	@OneToMany(mappedBy="course")
+	private List<Review> reviews;
+	
+	@ManyToMany(mappedBy="courses")
+	private List<Student> students;
 	
 	
 	// Default no arg constructor is mandatory
@@ -52,6 +62,14 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", name=" + name + "]";
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void addReview(Review review) {
+		this.reviews.add(review);
 	}
 	
 	
