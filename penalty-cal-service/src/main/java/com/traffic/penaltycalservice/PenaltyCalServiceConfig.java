@@ -3,7 +3,7 @@ package com.traffic.penaltycalservice;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 @Component
-@ConfigurationProperties("penalty-calculation-config")
+@ConfigurationProperties("penalty-calculation")
 public class PenaltyCalServiceConfig {
 
 	private int maxPenalty;
