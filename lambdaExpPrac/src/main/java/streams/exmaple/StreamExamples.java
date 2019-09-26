@@ -54,7 +54,11 @@ public class StreamExamples {
 		
 		salLs = salary.stream().parallel().filter(p.negate()).map(fn).sorted(cp).collect(Collectors.toList());
 		
-		System.out.println("Using parallel stream ls is " + salLs);
+		System.out.println("Using parallel stream of stream class ls is " + salLs);
+		
+		// using parallelstream
+		salLs = salary.parallelStream().filter(p.negate()).map(fn).sorted(cp).collect(Collectors.toList());
+		System.out.println("using parallel stream L "+ salLs);
 	}
 
 }
